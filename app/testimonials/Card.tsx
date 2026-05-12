@@ -24,7 +24,7 @@ const Card = ({ rating, remarks, name, location, image }: CardProps) => {
   };
 
   return (
-    <div className="min-w-[300px] md:min-w-[400px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center snap-center shrink-0">
+    <div className="w-[280px] sm:w-[350px] md:w-[400px] bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center snap-center shrink-0 transition-shadow hover:shadow-md">
       <div className="rounded-full overflow-hidden mb-4 border-2 border-blue-100">
         <img className="h-[60px] w-[60px] object-cover" src={image} alt={name} />
       </div>

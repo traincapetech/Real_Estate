@@ -24,41 +24,42 @@ export default function PropertyDetails() {
   return (
     <main className="bg-gray-50 min-h-screen">
       <section className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div className="w-full">
+              <span className="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 {property.type}
               </span>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">{property.title}</h1>
-              <p className="text-gray-600 flex items-center mt-1">
-                <span className="mr-2">📍</span> {property.location}
+              <h1 className="text-3xl md:text-5xl font-black text-slate-900 mt-3 leading-tight text-balance">{property.title}</h1>
+              <p className="text-slate-500 flex items-center mt-2 font-medium">
+                <span className="mr-2 text-xl">📍</span> {property.location}
               </p>
             </div>
-            <div className="text-left md:text-right">
-              <p className="text-sm text-gray-500 font-semibold uppercase">Price</p>
-              <p className="text-3xl font-black text-blue-600">₹{property.price}</p>
+            <div className="w-full md:w-auto p-4 md:p-0 bg-slate-50 md:bg-transparent rounded-2xl md:rounded-none md:text-right border md:border-0 border-slate-100">
+              <p className="text-xs text-slate-400 font-black uppercase tracking-widest mb-1">Price</p>
+              <p className="text-3xl md:text-4xl font-black text-amber-600">₹{property.price}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. Main Content Gallery & Info */}
-      <section className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           
           {/* Left Column: Image & Info */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="rounded-2xl overflow-hidden shadow-lg h-[400px] md:h-[500px]">
+          <div className="lg:col-span-2 space-y-8 md:space-y-12">
+            <div className="rounded-3xl overflow-hidden shadow-2xl h-[350px] md:h-[600px] relative">
               <img 
                 src={property.image} 
                 alt={property.title} 
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 ring-1 ring-inset ring-slate-950/10 rounded-3xl"></div>
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4 bg-white p-6 rounded-xl shadow-sm border">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-slate-100 border border-slate-50">
               <div className="text-center border-r">
                 <p className="text-gray-500 text-xs uppercase font-bold">Bedrooms</p>
                 <p className="text-xl font-bold">{property.beds || 'N/A'}</p>
@@ -96,18 +97,19 @@ export default function PropertyDetails() {
           </div>
 
           <div className="lg:col-span-1">
-            <div className="bg-white p-8 rounded-xl shadow-xl border sticky top-24 text-center">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+            <div className="bg-slate-950 p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200 sticky top-24 text-center text-white overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-3xl"></div>
+              <div className="w-16 h-16 bg-amber-400 text-slate-950 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl rotate-3">
                 📩
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Interested in this Property?</h3>
-              <p className="text-gray-500 mb-8">
-                Our agents are ready to provide you with more details, floor plans, and schedule a private viewing.
+              <h3 className="text-2xl font-black mb-4 leading-tight italic">Interested in this Property?</h3>
+              <p className="text-slate-400 mb-8 font-medium">
+                Our specialists are ready to provide you with floor plans and schedule a private viewing.
               </p>
               
               <button 
                 onClick={handleInquiryRedirect}
-                className="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer"
+                className="w-full bg-amber-400 text-slate-950 font-black py-5 rounded-2xl hover:bg-amber-300 transition-all shadow-xl shadow-amber-400/20 active:scale-[0.98] uppercase tracking-widest text-sm"
               >
                 Request Full Details
               </button>

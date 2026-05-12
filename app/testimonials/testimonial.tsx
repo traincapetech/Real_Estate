@@ -26,24 +26,26 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between items-end mb-10">
+    <section className="py-12 md:py-20 bg-gray-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-8 md:mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">Client Speak</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Client Speak</h2>
             <div className="h-1 w-20 bg-blue-600 mt-2"></div>
           </div>
           
-          <div className="flex gap-2">
+          <div className="flex gap-3 self-end md:self-auto">
             <button 
               onClick={() => scroll('left')}
-              className="p-3 rounded-full bg-white border hover:bg-blue-600 hover:text-white transition-colors"
+              className="p-3 md:p-4 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-blue-600 hover:text-white transition-all active:scale-95"
+              aria-label="Scroll left"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="p-3 rounded-full bg-white border hover:bg-blue-600 hover:text-white transition-colors"
+              className="p-3 md:p-4 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-blue-600 hover:text-white transition-all active:scale-95"
+              aria-label="Scroll right"
             >
               <ChevronRight size={24} />
             </button>

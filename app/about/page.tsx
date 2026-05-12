@@ -35,30 +35,29 @@ export default function About() {
     <div className="bg-white min-h-screen font-sans text-slate-900">
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-24 px-6 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative z-10">
+      <section className="relative pt-24 pb-20 md:pb-32 px-4 md:px-6 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="relative z-10 text-center md:text-left">
             <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Our Heritage</span>
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-6">
-              Redefining <br />
+            <h1 className="text-4xl md:text-7xl font-black text-slate-900 leading-[1.15] mb-6 tracking-tight">
+              Redefining <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-amber-600">
                 Property Luxury.
               </span>
             </h1>
-            <p className="text-slate-600 text-lg mb-10 leading-relaxed max-w-lg">
-              Since 2010, <span className="text-slate-900 font-semibold">Bold India Group</span> has been the bridge between vision and reality for India's most prestigious addresses.
+            <p className="text-slate-600 text-base md:text-lg mb-8 md:mb-10 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
+              Since 2010, <span className="text-slate-900 font-bold">Bold India Group</span> has been the bridge between vision and reality for India's most prestigious addresses.
             </p>
-            <div >
-           
-              <Link href="/contact" className="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-2xl font-bold hover:bg-slate-50 transition-all inline-block">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <Link href="/contact" className="bg-slate-950 text-white px-8 py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all active:scale-95 shadow-xl shadow-slate-200">
                 Contact Us
               </Link>
             </div>
           </div>
           
-          <div className="relative group">
+          <div className="relative group px-4 md:px-0">
             <div className="absolute -inset-4 bg-amber-400/10 rounded-[3rem] blur-3xl transition-all group-hover:bg-amber-400/20"></div>
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+            <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 md:border-8 border-white">
                <img 
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" 
                 alt="Modern Office" 
@@ -85,24 +84,24 @@ export default function About() {
       </section>
 
       {/* Philosophy/Values Section */}
-      <section className="py-32 px-6 bg-slate-50">
+      <section className="py-20 md:py-32 px-4 md:px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Built on Unwavering Principles.</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">Built on Unwavering Principles.</h2>
               <div className="h-1.5 w-20 bg-amber-400 rounded-full"></div>
             </div>
-            <p className="text-slate-500 text-lg max-w-sm">We don't just sell square footage; we curate the backdrop for your life's best moments.</p>
+            <p className="text-slate-500 text-base md:text-lg max-w-sm italic">We don't just sell square footage; we curate the backdrop for your life's best moments.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {values.map((v) => (
-              <div key={v.title} className="bg-white p-12 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <div key={v.title} className="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-8 font-black text-xl">
                   0{values.indexOf(v) + 1}
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{v.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{v.desc}</p>
+                <p className="text-slate-600 leading-relaxed font-medium">{v.desc}</p>
               </div>
             ))}
           </div>

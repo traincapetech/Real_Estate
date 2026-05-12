@@ -35,17 +35,17 @@ export default function Home() {
 
         <section className="py-24 px-6 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-12 gap-6">
               <div>
-                <h2 className="text-4xl font-black text-slate-900 mb-2">Explore Categories</h2>
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 text-balance">Explore Categories</h2>
                 <div className="h-1.5 w-16 bg-amber-400 rounded-full"></div>
               </div>
-              <Link href="/properties" className="text-slate-600 font-bold hover:text-amber-600 transition-colors uppercase text-sm tracking-widest">
-                View All Properties →
+              <Link href="/properties" className="text-slate-600 font-bold hover:text-amber-600 transition-colors uppercase text-sm tracking-widest flex items-center">
+                View All Properties <span className="ml-2">→</span>
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { name: 'Luxury Villas', count: '120+', icon: <HomeIcon /> },
                 { name: 'Modern Flats', count: '450+', icon: <Zap /> },
@@ -66,9 +66,9 @@ export default function Home() {
 
         {/* Featured Properties */}
         <section className="max-w-7xl mx-auto py-24 px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Featured Listings</h2>
-            <p className="text-slate-500 max-ws-2xl mx-auto italic">Handpicked premium residences that define modern living in India's metropolitan hubs.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">Featured Listings</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto italic px-4">Handpicked premium residences that define modern living in India's metropolitan hubs.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -126,13 +126,13 @@ export default function Home() {
         <Testimonials />
 
         {/* CTA Section */}
-        <section className="py-24 px-6 text-center">
-          <div className="max-w-4xl mx-auto bg-amber-400 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl shadow-amber-200">
+        <section className="py-20 md:py-24 px-4 md:px-6 text-center">
+          <div className="max-w-4xl mx-auto bg-amber-400 rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-20 relative overflow-hidden shadow-2xl shadow-amber-200/40">
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-950 mb-6 italic">Ready to make a move?</h2>
-              <p className="text-slate-800 text-lg mb-10 font-medium">Join 1,800+ families who found their peace with Bold India Group.</p>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-950 mb-6 italic leading-tight">Ready to make a move?</h2>
+              <p className="text-slate-800 text-base md:text-lg mb-8 md:mb-10 font-medium max-w-xl mx-auto">Join 1,800+ families who found their peace with Bold India Group.</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/contact" className="bg-slate-950 text-white px-12 py-5 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-widest shadow-xl">
+                <Link href="/contact" className="w-full sm:w-auto bg-slate-950 text-white px-12 py-5 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-widest shadow-xl">
                   Contact Specialist
                 </Link>
               </div>

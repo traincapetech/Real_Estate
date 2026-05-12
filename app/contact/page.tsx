@@ -5,23 +5,23 @@ export default function Contact() {
     <div className="bg-white min-h-screen font-sans text-slate-900">
       
       {/* Header Section */}
-      <section className="pt-20 pb-12 px-6 bg-slate-50 border-b border-slate-200">
+      <section className="pt-24 pb-16 px-4 md:px-6 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto text-center">
           <span className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Get In Touch</span>
-          <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
-            Let’s Talk About <br />
+          <h1 className="text-4xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+            Let’s Talk About <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600">Your Future Home.</span>
           </h1>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-base md:text-xl max-w-2xl mx-auto font-medium">
             Whether you’re looking to buy, sell, or invest, our experts are here to provide 
             tailored advice and premium service.
           </p>
         </div>
       </section>
 
-      <section className="py-20 px-6">
+      <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
             
             {/* Left Column: Contact Information */}
             <div className="space-y-12">
@@ -69,13 +69,13 @@ export default function Contact() {
               </div>
 
               {/* FAQ/Mini-Help Section */}
-              <div className="bg-slate-950 rounded-[2.5rem] p-10 text-white relative overflow-hidden shadow-2xl shadow-slate-200">
+              <div className="bg-slate-950 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200/50">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-3xl"></div>
                 <MessageSquare className="text-amber-400 mb-6" size={32} />
-                <h3 className="text-2xl font-bold mb-4 italic">Quick Assistance?</h3>
-                <p className="text-slate-400 mb-6">Our average response time for business inquiries is less than 2 hours during working hours.</p>
-                <button className="text-amber-400 font-black uppercase tracking-widest text-xs hover:text-white transition-colors">
-                  WhatsApp Support →
+                <h3 className="text-2xl font-black mb-4 italic leading-tight text-balance">Need Quick Assistance?</h3>
+                <p className="text-slate-400 mb-8 font-medium">Our average response time for business inquiries is less than 2 hours during working hours.</p>
+                <button className="flex items-center gap-2 text-amber-400 font-black uppercase tracking-widest text-xs hover:text-white transition-colors group">
+                  WhatsApp Support <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
               </div>
             </div>
