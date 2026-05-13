@@ -1,4 +1,6 @@
-import { Star, StarHalf } from 'lucide-react'; 
+"use client";
+import { motion } from 'framer-motion';
+import { Star, StarHalf } from 'lucide-react';
 
 interface CardProps {
   rating: number;
@@ -7,6 +9,22 @@ interface CardProps {
   location: string;
   image: string;
 }
+
+// 1. Define variants outside the component for cleaner code
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30 
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 const Card = ({ rating, remarks, name, location, image }: CardProps) => {
   const renderStars = (num: number) => {
@@ -24,16 +42,39 @@ const Card = ({ rating, remarks, name, location, image }: CardProps) => {
   };
 
   return (
-    <div className="min-w-[300px] md:min-w-[400px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center snap-center shrink-0">
-      <div className="rounded-full overflow-hidden mb-4 border-2 border-blue-100">
-        <img className="h-[60px] w-[60px] object-cover" src={image} alt={name} />
+    <motion.div 
+      // 2. Use the variants here
+      variants={cardVariants}
+      
+      // 3. Hover effects remain interactive
+      whileHover={{ 
+        y: -12, 
+        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
+        borderColor: "rgb(251 191 36)" // Subtle amber border on hover to match theme
+      }}
+      className="w-[280px] sm:w-[350px] md:w-[400px] bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center text-center snap-center shrink-0 transition-colors duration-300"
+    >
+      <div className="rounded-full overflow-hidden mb-6 border-4 border-slate-50 shadow-inner">
+        <img className="h-[70px] w-[70px] object-cover" src={image} alt={name} />
       </div>
-      <div className="flex gap-1 mb-3">{renderStars(rating)}</div>
-      <div className="text-gray-600 italic mb-4 leading-relaxed">{remarks}</div>
-      <div className="font-bold text-blue-900">
-        {name} <span className="font-normal text-gray-400">-{location}</span>
+      
+      <div className="flex gap-1 mb-4">
+        {renderStars(rating)}
       </div>
-    </div>
+      
+      <p className="text-slate-600 italic mb-6 leading-relaxed line-clamp-4 text-sm md:text-base">
+        "{remarks}"
+      </p>
+      
+      <div className="mt-auto">
+        <div className="font-black text-slate-900 uppercase tracking-wide text-sm">
+          {name}
+        </div>
+        <div className="text-amber-500 font-bold text-xs uppercase tracking-widest mt-1">
+          {location}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

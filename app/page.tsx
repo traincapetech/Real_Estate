@@ -1,143 +1,220 @@
-import {  PropertyCard } from './components/PropertyCard';
+"use client";
+
+import { useState, useEffect } from 'react';
+import { PropertyCard } from './components/PropertyCard';
 import Testimonials from './testimonials/testimonial';
 import Link from 'next/link';
 import { MapPin, Home as HomeIcon, Shield, Zap } from 'lucide-react';
 import { allProperties, Property } from './components/data';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const featured: Property[] = allProperties.slice(0, 3);;
+const featured: Property[] = allProperties.slice(0, 3);
+
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920",
+  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920",
+  "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200",
+  "https://images.unsplash.com/photo-1722062767419-ff110d4e7db7?auto=format&fit=crop&w=1200"
+];
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-screen">
       <main>
-        {/* Enhanced Hero Section */}
-        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image with Overlay */}
+        
+        {/* --- HERO SECTION --- 
+            Using bg-slate-950 so that during the cross-fade transition, 
+            the background is dark, preventing large white flashes.
+        */}
+        <section className="relative h-[92vh] w-full flex items-center justify-center overflow-hidden bg-slate-950">
+          
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1920" 
-              className="w-full h-full object-cover"
-              alt="Luxury Estate"
-            />
-            <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"></div>
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <motion.img
+                  src={HERO_IMAGES[index]}
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 3.5, ease: "linear" }}
+                  // Kept brightness higher (0.6) so it's not "too dark", 
+                  // but enough to make white text pop.
+                  className="w-full h-full object-cover brightness-[0.6] transition-all"
+                  alt="Luxury Real Estate"
+                />
+              </motion.div>
+            </AnimatePresence>
+            
+            {/* Subtle Gradient: Keeps the bottom of the hero blended with the next section */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950/20"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl px-6 text-center">
-            <span className="text-amber-400 font-bold tracking-[0.3em] text-xs uppercase mb-4 block">
-              Redefining Indian Real Estate
-            </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
-              Find Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Perfect Home</span> in India
-            </h1>
-            </div>
- 
+          {/* Hero Content: White text for high contrast against the image */}
+          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl md:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase drop-shadow-2xl">
+                FIND YOUR HOUSE <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 italic">
+                  WITH US
+                </span>
+              </h1>
+
+              <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium leading-relaxed drop-shadow-lg">
+                Experience India's most exclusive residences through a cinematic lens. Transparent, bold, and breathtaking.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link href="/properties" className="w-full sm:w-auto bg-amber-400 text-slate-950 px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl">
+                  Explore Collection
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Progress Indicators */}
+          <div className="absolute bottom-10 flex gap-3 z-20">
+            {HERO_IMAGES.map((_, i) => (
+              <div 
+                key={i} 
+                className={`h-1.5 transition-all duration-500 rounded-full ${i === index ? "w-10 bg-amber-400" : "w-3 bg-white/30"}`}
+              />
+            ))}
+          </div>
         </section>
 
+        {/* --- CATEGORIES SECTION --- */}
         <section className="py-24 px-6 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-              <div>
-                <h2 className="text-4xl font-black text-slate-900 mb-2">Explore Categories</h2>
-                <div className="h-1.5 w-16 bg-amber-400 rounded-full"></div>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="text-center md:text-left">
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter uppercase">Curated Portfolio</h2>
+                <div className="h-2 w-24 bg-amber-400 rounded-full mx-auto md:mx-0"></div>
               </div>
-              <Link href="/properties" className="text-slate-600 font-bold hover:text-amber-600 transition-colors uppercase text-sm tracking-widest">
-                View All Properties →
+              <Link href="/properties" className="text-slate-600 font-black hover:text-amber-600 transition-colors uppercase text-xs tracking-[0.2em] pb-2 border-b-2 border-amber-100 hover:border-amber-400">
+                View All Listings →
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { name: 'Luxury Villas', count: '120+', icon: <HomeIcon /> },
                 { name: 'Modern Flats', count: '450+', icon: <Zap /> },
                 { name: 'Commercial', count: '85+', icon: <Shield /> },
                 { name: 'Plots/Land', count: '200+', icon: <MapPin /> },
               ].map((cat) => (
-                <div key={cat.name} className="bg-white p-8 rounded-[2rem] border border-slate-100 hover:border-amber-400 hover:shadow-xl transition-all group cursor-pointer">
-                  <div className="w-12 h-12 bg-slate-900 text-amber-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <motion.div 
+                  key={cat.name}
+                  whileHover={{ y: -12 }}
+                  className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-2xl transition-all group cursor-pointer"
+                >
+                  <div className="w-14 h-14 bg-slate-900 text-amber-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-400 group-hover:text-slate-900 transition-all duration-300">
                     {cat.icon}
                   </div>
-                  <h3 className="font-bold text-slate-900 text-lg">{cat.name}</h3>
-                  <p className="text-slate-400 text-sm font-medium mt-1 uppercase tracking-tighter">{cat.count} Listings</p>
-                </div>
+                  <h3 className="font-black text-slate-900 text-xl mb-2">{cat.name}</h3>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">{cat.count} Listings</p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Properties */}
-        <section className="max-w-7xl mx-auto py-24 px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Featured Listings</h2>
-            <p className="text-slate-500 max-ws-2xl mx-auto italic">Handpicked premium residences that define modern living in India's metropolitan hubs.</p>
+        {/* --- FEATURED PROPERTIES --- */}
+        <section className="max-w-7xl mx-auto py-24 px-6 bg-white">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tighter uppercase">Signature Homes</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto font-medium text-lg">
+              A handpicked selection of our most requested properties available this month.
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {featured.map(prop => <PropertyCard key={prop.id} property={prop} />)}
-          </div>
-
-          <div className="mt-16 text-center">
-             <Link href="/properties" className="inline-block border-2 border-slate-900 text-slate-900 px-10 py-4 rounded-2xl font-black hover:bg-slate-900 hover:text-white transition-all uppercase tracking-widest text-sm">
-                Explore All Listings
-             </Link>
+            {featured.map((prop) => (
+              <PropertyCard key={prop.id} property={prop} />
+            ))}
           </div>
         </section>
 
-        {/* Trust/Process Section */}
-        <section className="bg-slate-950 py-24 px-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px]"></div>
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* --- TRUST & QUALITY SECTION --- */}
+        <section className="bg-slate-50 py-32 px-6 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-8 leading-tight">
-                Why Thousands Trust <br /> 
-                <span className="text-amber-400">Bold India Group</span>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-12 leading-tight uppercase">
+                The Bold <br /> 
+                <span className="text-amber-500">Standard</span>
               </h2>
-              <div className="space-y-8">
+              <div className="space-y-10">
                 {[
                   { title: 'Verified Listings', desc: 'Every property goes through a 50-point verification check.' },
                   { title: 'Expert Guidance', desc: 'Local experts to guide you from viewing to registration.' },
                   { title: 'Zero Brokerage', desc: 'Transparent deals with direct developer/owner pricing.' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center font-black text-slate-950">
+                  <div key={idx} className="flex gap-6 items-start">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center font-black text-white">
                       {idx + 1}
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-xl mb-1">{item.title}</h4>
-                      <p className="text-slate-400">{item.desc}</p>
+                      <h4 className="text-slate-900 font-bold text-2xl mb-2 tracking-tight">{item.title}</h4>
+                      <p className="text-slate-500 text-lg leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative">
+
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
               <img 
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800" 
-                className="rounded-[3rem] shadow-2xl grayscale"
-                alt="Meeting"
+                className="rounded-[3.5rem] shadow-2xl border-4 border-white"
+                alt="Professional Consultation"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-8 rounded-3xl shadow-xl hidden lg:block">
-                <p className="text-slate-950 font-black text-3xl">15+</p>
-                <p className="text-slate-500 font-bold uppercase text-xs tracking-widest">Years of Excellence</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         <Testimonials />
 
-        {/* CTA Section */}
-        <section className="py-24 px-6 text-center">
-          <div className="max-w-4xl mx-auto bg-amber-400 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl shadow-amber-200">
+        {/* --- FINAL CTA SECTION --- */}
+        <section className="py-32 px-6 bg-white">
+          <motion.div 
+            whileHover={{ scale: 1.01 }}
+            className="max-w-6xl mx-auto bg-amber-400 rounded-[4rem] p-12 md:p-24 relative overflow-hidden shadow-2xl shadow-amber-200 text-center"
+          >
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-950 mb-6 italic">Ready to make a move?</h2>
-              <p className="text-slate-800 text-lg mb-10 font-medium">Join 1,800+ families who found their peace with Bold India Group.</p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/contact" className="bg-slate-950 text-white px-12 py-5 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-widest shadow-xl">
-                  Contact Specialist
-                </Link>
-              </div>
+              <h2 className="text-5xl md:text-7xl font-black text-slate-950 mb-8 italic tracking-tighter uppercase">Ready to make a move?</h2>
+              <p className="text-slate-900 text-xl mb-12 font-bold max-w-xl mx-auto">Join 1,800+ families who found their peace with Bold India Group.</p>
+              <Link href="/contact" className="inline-block bg-slate-950 text-white px-14 py-6 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-[0.2em] shadow-2xl">
+                Contact A Specialist
+              </Link>
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
     </div>
