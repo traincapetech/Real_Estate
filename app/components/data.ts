@@ -3,13 +3,17 @@ export interface Property {
   title: string;
   location: string;
   price: string;
-  type: 'Apartment' | 'Villa' | 'Plot' | 'Studio' | 'Penthouse' | 'Row House' | 'Condo' | 'Farm House' | 'Land Bank';
+  type: 'Apartment' | 'Villa' | 'Plot' | 'Studio' | 'Penthouse' | 'Row House' | 'Condo' | 'Farm House' | 'Land Bank'| 'Office Space' |  'Retail Shop'| 'Warehouse'|  'Industrial Plot'|'Commercial Space' ;
   image: string;
   beds?: number;
   baths?: number;
   sqft: number;
   description?: string;
   amenities?: string[];
+
+   status?: string;
+  furnishing?: string;
+  parking?: string;
 }
 
 export const allProperties: Property[] = [
@@ -24,7 +28,10 @@ export const allProperties: Property[] = [
     baths: 3,
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200',
     description: 'A breathtaking high-rise apartment offering 180-degree views of the Arabian Sea. Features bespoke Italian marble flooring and a smart-home automation system.',
-    amenities: ['Infinity Pool', 'Valet Parking', 'Private Theater', 'Yoga Deck']
+    amenities: ['Infinity Pool', 'Valet Parking', 'Private Theater', 'Yoga Deck'],
+    status: 'Ready to Move',
+furnishing: 'Semi Furnished',
+parking: '2 Covered Parking',
   },
   {
     id: 2,
@@ -37,7 +44,10 @@ export const allProperties: Property[] = [
     baths: 6,
     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200',
     description: 'A sprawling colonial-style villa nestled in the hills. Includes a private temperature-controlled pool, staff quarters, and an organic kitchen garden.',
-    amenities: ['Private Pool', 'Wine Cellar', 'Staff Quarters', 'Solar Grid']
+    amenities: ['Private Pool', 'Wine Cellar', 'Staff Quarters', 'Solar Grid'],
+    status: 'Ready to Move',
+furnishing: 'Fully Furnished',
+parking: '4 Car Parking',
   },
   {
     id: 3,
@@ -50,7 +60,10 @@ export const allProperties: Property[] = [
     baths: 1,
 image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format&fit=crop&w=1200',
     description: 'Minimalist industrial-chic studio perfect for young professionals. High ceilings, exposed brick walls, and walking distance to the city’s best cafes.',
-    amenities: ['Fiber Internet', 'Co-working Space', 'Rooftop Lounge', 'Bike Storage']
+    amenities: ['Fiber Internet', 'Co-working Space', 'Rooftop Lounge', 'Bike Storage'],
+    status: 'Ready to Move',
+furnishing: 'Fully Furnished',
+parking: '1 Covered Parking',
   },
   {
     id: 4,
@@ -63,7 +76,10 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     baths: 5,
     image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200',
     description: 'The ultimate luxury experience. This triplex penthouse includes a private elevator, a rooftop plunge pool, and a dedicated concierge service.',
-    amenities: ['Private Elevator', 'Plunge Pool', 'Barbecue Pit', 'Concierge']
+    amenities: ['Private Elevator', 'Plunge Pool', 'Barbecue Pit', 'Concierge'],
+    status: 'Luxury Ready Possession',
+furnishing: 'Ultra Luxury Furnished',
+parking: 'Private Parking Deck',
   },
   {
     id: 5,
@@ -74,7 +90,10 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     sqft: 2400,
     image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200',
     description: 'A premium corner plot in a gated community. Ready for immediate construction with pre-installed water and electricity lines.',
-    amenities: ['Gated Community', 'Clubhouse Access', 'Landscaped Parks', '24/7 Water']
+    amenities: ['Gated Community', 'Clubhouse Access', 'Landscaped Parks', '24/7 Water'],
+    status: 'Available for Construction',
+furnishing: 'Not Applicable',
+parking: 'Roadside Parking',
   },
   {
     id: 6,
@@ -87,7 +106,10 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     baths: 3,
     image: 'https://images.unsplash.com/photo-1722062767419-ff110d4e7db7?auto=format&fit=crop&w=1200',
     description: 'A modern take on the traditional row house. Features a skylight over the central staircase and a cozy private backyard for evening tea.',
-    amenities: ['Private Garden', 'Power Backup', 'Guest Parking', 'Library']
+    amenities: ['Private Garden', 'Power Backup', 'Guest Parking', 'Library'],
+    status: 'Ready to Move',
+furnishing: 'Semi Furnished',
+parking: '2 Covered Parking',
   },
   {
     id: 7,
@@ -100,7 +122,10 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     baths: 2,
     image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200',
     description: 'A sleek, contemporary condo located in the heart of Mumbai’s nightlife and fashion district. Ideal for those who love city life.',
-    amenities: ['Gym', 'Steam Room', 'Business Center', 'Covered Parking']
+    amenities: ['Gym', 'Steam Room', 'Business Center', 'Covered Parking'],
+    status: 'Ready to Move',
+furnishing: 'Fully Furnished',
+parking: 'Covered Basement Parking',
   },
   {
     id: 8,
@@ -113,7 +138,10 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     baths: 4,
     image: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200',
     description: 'A Mediterranean-inspired villa just 500 meters from the beach. Features large verandas and traditional Portuguese architectural elements.',
-    amenities: ['Beach Access', 'Outdoor Shower', 'Pet Friendly', 'Security Cameras']
+    amenities: ['Beach Access', 'Outdoor Shower', 'Pet Friendly', 'Security Cameras'],
+    status: 'Ready to Move',
+furnishing: 'Luxury Furnished',
+parking: '3 Car Parking',
   },
 
 
@@ -128,12 +156,15 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     baths: 8,
 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop&q=60',
 description: 'A peaceful farmhouse retreat in Manesar, Gurgaon surrounded by lush greenery and open lands',
-amenities: ['Private Lawn', 'Swimming Pool', 'Outdoor Seating', '24/7 Security']
+amenities: ['Private Lawn', 'Swimming Pool', 'Outdoor Seating', '24/7 Security'],
+status: 'Ready to Move',
+furnishing: 'Fully Furnished',
+parking: 'Open Parking Space',
   },
 {
   id: 10,
   title: 'Prime Land Bank Opportunity',
-  location: 'sector 29, Gurugram',
+  location: 'Sector 29,Gurugram',
   price: '18.7 Cr',
   type: 'Land Bank',
   sqft: 7500,
@@ -141,6 +172,91 @@ amenities: ['Private Lawn', 'Swimming Pool', 'Outdoor Seating', '24/7 Security']
   baths: 0,
   image: 'https://media.istockphoto.com/id/2158990093/photo/land-boundary-made-with-wires.jpg',
   description: 'A strategically located land bank property in Manesar, Gurugram with high future appreciation potential. Ideal for long-term investment, commercial expansion, or future development projects.',
-  amenities: ['Boundary Fencing', 'Road Access', 'Prime Location', 'Investment Opportunity']
+  amenities: ['Boundary Fencing', 'Road Access', 'Prime Location', 'Investment Opportunity'],
+  status: 'Available',
+furnishing: 'Not Applicable',
+parking: 'Open Parking Available',
+},
+
+
+{
+  id: 11,
+  title: 'Signature Corporate Office',
+  location: 'Cyber City, Gurugram',
+  price: '9.8 Cr',
+  type: 'Office Space',
+  sqft: 5200,
+  beds: 0,
+  baths: 4,
+  image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200',
+  description: 'A premium office space in Cyber City, Gurugram designed for growing businesses and corporate teams. Features modern interiors, meeting rooms, high-speed connectivity, and excellent metro access.',
+  amenities: ['Conference Rooms', 'High-Speed Internet', 'Power Backup', 'Metro Connectivity'],
+  status: 'Ready for Lease/Sale',
+furnishing: 'Modern Furnished',
+parking: 'Reserved Office Parking',
+},
+{
+  id: 12,
+  title: 'Prime Retail Showroom',
+  location: 'Golf Course Road, Gurugram',
+  price: '6.4 Cr',
+  type: 'Retail Shop',
+  sqft: 1800,
+  beds: 0,
+  baths: 2,
+  image: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1200',
+  description: 'A high-visibility retail showroom located on Golf Course Road. Ideal for luxury brands, boutiques, cafes, or premium customer-facing businesses.',
+  amenities: ['Main Road Facing', 'Display Frontage', 'Customer Parking', 'High Footfall'],
+  status: 'Commercial Ready',
+furnishing: 'Semi Furnished',
+parking: 'Customer Parking',
+},
+{
+  id: 13,
+  title: 'Logistics Warehouse Hub',
+  location: 'Bilaspur, Gurugram',
+  price: '11.5 Cr',
+  type: 'Warehouse',
+  sqft: 15000,
+  beds: 0,
+  baths: 3,
+  image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200',
+  description: 'A spacious warehouse facility suitable for logistics, storage, distribution, and e-commerce operations. Offers wide vehicle access, loading zones, and strong highway connectivity.',
+  amenities: ['Loading Dock', 'Truck Access', 'High Ceiling', 'Security'],
+  status: 'Operational',
+furnishing: 'Industrial Setup',
+parking: 'Truck Parking',
+},
+{
+  id: 14,
+  title: 'Industrial Growth Plot',
+  location: 'Manesar, Gurugram',
+  price: '15.9 Cr',
+  type: 'Industrial Plot',
+  sqft: 22000,
+  beds: 0,
+  baths: 0,
+  image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200',
+  description: 'A strategically positioned industrial plot in Manesar suitable for manufacturing, warehousing, or future industrial development. Located close to major highways and business zones.',
+  amenities: ['Wide Road Access', 'Industrial Zone', 'Highway Connectivity', 'Investment Potential'],
+  status: 'Available',
+furnishing: 'Not Applicable',
+parking: 'Heavy Vehicle Access',
+},
+{
+  id: 15,
+  title: 'Premium Commercial Space',
+  location: 'Sector 29, Gurugram',
+  price: '8.2 Cr',
+  type: 'Commercial Space',
+  sqft: 3600,
+  beds: 0,
+  baths: 3,
+  image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200',
+  description: 'A premium commercial space in Sector 29, Gurugram suitable for offices, clinics, studios, or service-based businesses. Surrounded by restaurants, hotels, and commercial activity.',
+  amenities: ['Prime Location', 'Lift Access', 'Reserved Parking', 'Business District'],
+  status: 'Ready to Occupy',
+furnishing: 'Modern Commercial Interior',
+parking: 'Reserved Parking',
 }
 ];

@@ -48,7 +48,8 @@ export default function PropertyDetailsClient({ id }: Props) {
               ₹{property.price}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              
               <div>
                 <h3 className="font-semibold text-gray-700">
                   Property Type
@@ -64,9 +65,59 @@ export default function PropertyDetailsClient({ id }: Props) {
 
                 <p>{property.sqft} sq.ft.</p>
               </div>
+
+              {property.beds !== undefined && (
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Bedrooms
+                  </h3>
+
+                  <p>{property.beds}</p>
+                </div>
+              )}
+
+              {property.baths !== undefined && (
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Bathrooms
+                  </h3>
+
+                  <p>{property.baths}</p>
+                </div>
+              )}
+
+              {property.status && (
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Status
+                  </h3>
+
+                  <p>{property.status}</p>
+                </div>
+              )}
+
+              {property.furnishing && (
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Furnishing
+                  </h3>
+
+                  <p>{property.furnishing}</p>
+                </div>
+              )}
+
+              {property.parking && (
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Parking
+                  </h3>
+
+                  <p>{property.parking}</p>
+                </div>
+              )}
             </div>
 
-            <div className="mt-8">
+            <div className="mt-10">
               <h2 className="text-2xl font-bold mb-3">
                 Description
               </h2>
@@ -74,6 +125,23 @@ export default function PropertyDetailsClient({ id }: Props) {
               <p className="text-gray-600 leading-8">
                 {property.description}
               </p>
+            </div>
+
+            <div className="mt-10">
+              <h2 className="text-2xl font-bold mb-4">
+                Amenities
+              </h2>
+
+              <div className="flex flex-wrap gap-3">
+                {property.amenities?.map((item) => (
+                  <span
+                    key={item}
+                    className="bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-semibold"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
