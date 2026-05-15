@@ -3,16 +3,18 @@ import { allProperties } from "../../components/data";
 import PropertyDetailsClient from "../PropertiesClient";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+
   const property = allProperties.find(
-    (p) => p.id === Number(params.id)
+    (p) => p.id === Number(id)
   );
 
   if (!property) {
@@ -41,6 +43,8 @@ export async function generateMetadata({
   };
 }
 
-export default function PropertyPage({ params }: PageProps) {
-  return <PropertyDetailsClient id={params.id} />;
+export default async function PropertyPage({ params }: PageProps) {
+  const { id } = await params;
+
+  return <PropertyDetailsClient id={id} />;
 }

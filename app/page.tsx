@@ -15,7 +15,9 @@ const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920",
   "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920",
   "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200",
-  "https://images.unsplash.com/photo-1722062767419-ff110d4e7db7?auto=format&fit=crop&w=1200"
+  "https://images.unsplash.com/photo-1722062767419-ff110d4e7db7?auto=format&fit=crop&w=1200",
+   "/banner.jpg",
+
 ];
 
 export default function Home() {
@@ -51,16 +53,16 @@ export default function Home() {
                 }}
                 className="absolute inset-0 w-full h-full"
               >
-                <motion.img
-                  src={HERO_IMAGES[index]}
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 3.5, ease: "linear" }}
-                  // Kept brightness higher (0.6) so it's not "too dark", 
-                  // but enough to make white text pop.
-                  className="w-full h-full object-cover brightness-[0.6] transition-all"
-                  alt="Luxury Real Estate"
-                />
+              <motion.img
+  src={HERO_IMAGES[index]}
+  initial={{ scale: HERO_IMAGES[index] === "/banner.jpg" ? 1 : 1.1 }}
+  animate={{ scale: 1 }}
+  transition={{ duration: 3.5, ease: "linear" }}
+  className={`w-full h-full brightness-[0.6] transition-all ${
+    HERO_IMAGES[index] === "/banner.jpg" ? "object-contain bg-black" : "object-cover"
+  }`}
+  alt="Luxury Real Estate"
+/>
               </motion.div>
             </AnimatePresence>
             

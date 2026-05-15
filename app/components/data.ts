@@ -3,7 +3,7 @@ export interface Property {
   title: string;
   location: string;
   price: string;
-  type: 'Apartment' | 'Villa' | 'Plot' | 'Studio' | 'Penthouse' | 'Row House' | 'Condo';
+  type: 'Apartment' | 'Villa' | 'Plot' | 'Studio' | 'Penthouse' | 'Row House' | 'Condo' | 'Farm House' | 'Land Bank';
   image: string;
   beds?: number;
   baths?: number;
@@ -114,5 +114,33 @@ image: 'https://images.unsplash.com/photo-1702014862053-946a122b920d?auto=format
     image: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200',
     description: 'A Mediterranean-inspired villa just 500 meters from the beach. Features large verandas and traditional Portuguese architectural elements.',
     amenities: ['Beach Access', 'Outdoor Shower', 'Pet Friendly', 'Security Cameras']
-  }
+  },
+
+
+  {
+    id: 9,
+    title: 'The Greenwoods Farm House',
+    location: 'Manesar, Gurugram',
+    price: '13.2 Cr',
+    type: 'Farm House',
+    sqft: 4500,
+    beds: 8,
+    baths: 8,
+image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop&q=60',
+description: 'A peaceful farmhouse retreat in Manesar, Gurgaon surrounded by lush greenery and open lands',
+amenities: ['Private Lawn', 'Swimming Pool', 'Outdoor Seating', '24/7 Security']
+  },
+{
+  id: 10,
+  title: 'Prime Land Bank Opportunity',
+  location: 'sector 29, Gurugram',
+  price: '18.7 Cr',
+  type: 'Land Bank',
+  sqft: 7500,
+  beds: 0,
+  baths: 0,
+  image: 'https://media.istockphoto.com/id/2158990093/photo/land-boundary-made-with-wires.jpg',
+  description: 'A strategically located land bank property in Manesar, Gurugram with high future appreciation potential. Ideal for long-term investment, commercial expansion, or future development projects.',
+  amenities: ['Boundary Fencing', 'Road Access', 'Prime Location', 'Investment Opportunity']
+}
 ];

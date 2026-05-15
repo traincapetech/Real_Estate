@@ -27,8 +27,8 @@ const Navbar = () => {
             className="object-contain md:w-[75px] md:h-[55px]"
             priority
           />
-          <span className="text-xl md:text-2xl font-bold tracking-tight text-amber-400 group-hover:text-amber-300 transition-colors">
-            Bold India Group
+          <span className="text-xl md:text-2xl font-bold tracking-tight text-amber-400 group-hover:text-amber-400 transition-colors">
+            BOLD INDIA GROUP
           </span>
         </Link>
 
