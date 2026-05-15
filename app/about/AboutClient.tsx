@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const stats = [
   { value: "2,400+", label: "Properties", icon: <Trophy className="w-5 h-5" /> },
   { value: "1,800+", label: "Clients", icon: <Users className="w-5 h-5" /> },
-  { value: "15+",     label: "Years", icon: <Calendar className="w-5 h-5" /> },
+  { value: "10+",     label: "Years", icon: <Calendar className="w-5 h-5" /> },
   { value: "98%",     label: "Satisfaction", icon: <CheckCircle2 className="w-5 h-5" /> },
 ];
 
@@ -16,16 +16,39 @@ const values = [
   { title: "Commitment", desc: "We stay with you from the very first viewing to the final registration and beyond." },
 ];
 
-const team = [
-  { name: "Sarah Mitchell", role: "CEO & Founder", img: "https://i.pravatar.cc/150?u=sarah" },
-  { name: "James Carter",   role: "Head of Sales", img: "https://i.pravatar.cc/150?u=james" },
-  { name: "Priya Sharma",   role: "Senior Agent", img: "https://i.pravatar.cc/150?u=priya" },
-  { name: "Leo Nguyen",     role: "Property Consultant", img: "https://i.pravatar.cc/150?u=leo" },
-];
 
 export default function AboutClient() {
   return (
     <div className="bg-white min-h-screen font-sans text-slate-900">
+      <section className="w-full bg-white pt-24 px-4 md:px-6">
+  <div className="max-w-7xl mx-auto">
+
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative overflow-hidden rounded-[2.5rem] shadow-2xl"
+    >
+      <img
+        src="/banner.jpg"
+        alt="Luxury Real Estate Banner"
+        className="w-full h-[220px] sm:h-[320px] md:h-[500px] object-cover"
+      />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/25"></div>
+
+      {/* Bottom gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+    
+    </motion.div>
+
+  </div>
+</section>
+
+
+      
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 md:pb-32 px-4 md:px-6 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -91,29 +114,7 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">The Experts Behind the Name</h2>
-            <p className="text-slate-500">Dedicated professionals with over a century of combined experience.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-            {team.map((m, i) => (
-              <motion.div key={m.name} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group text-center">
-                <div className="relative mb-8 inline-block">
-                  <div className="absolute inset-0 bg-slate-900 rounded-full translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"></div>
-                  <div className="relative w-48 h-48 overflow-hidden rounded-full border-4 border-white shadow-lg">
-                    <img src={m.img} alt={m.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                  </div>
-                </div>
-                <h3 className="font-bold text-xl text-slate-900">{m.name}</h3>
-                <p className="text-amber-600 text-xs font-bold uppercase tracking-widest mt-2">{m.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mx-6 mb-24 max-w-7xl lg:mx-auto">

@@ -16,7 +16,7 @@ const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920",
   "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200",
   "https://images.unsplash.com/photo-1722062767419-ff110d4e7db7?auto=format&fit=crop&w=1200",
-   "/banner.jpg",
+  
 
 ];
 
@@ -53,16 +53,10 @@ export default function Home() {
                 }}
                 className="absolute inset-0 w-full h-full"
               >
-              <motion.img
-  src={HERO_IMAGES[index]}
-  initial={{ scale: HERO_IMAGES[index] === "/banner.jpg" ? 1 : 1.1 }}
-  animate={{ scale: 1 }}
-  transition={{ duration: 3.5, ease: "linear" }}
-  className={`w-full h-full brightness-[0.6] transition-all ${
-    HERO_IMAGES[index] === "/banner.jpg" ? "object-contain bg-black" : "object-cover"
-  }`}
-  alt="Luxury Real Estate"
-/>
+ <motion.img src={HERO_IMAGES[index]} initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 3.5, ease: "linear" }} 
+ // Kept brightness higher (0.6) so it's not "too dark", // but enough to make white text pop.
+  className="w-full h-full object-cover brightness-[0.6] transition-all"
+   alt="Luxury Real Estate" />
               </motion.div>
             </AnimatePresence>
             
@@ -130,6 +124,7 @@ export default function Home() {
                 <motion.div 
                   key={cat.name}
                   whileHover={{ y: -12 }}
+
                   className="bg-white p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-2xl transition-all group cursor-pointer"
                 >
                   <div className="w-14 h-14 bg-slate-900 text-amber-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-400 group-hover:text-slate-900 transition-all duration-300">
@@ -142,6 +137,60 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+        {/* --- PREMIUM BRAND STRIP --- */}
+<section className="relative overflow-hidden bg-slate-950 py-14 border-y border-slate-800">
+  {/* Glow Background */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.18),transparent_45%)]"></div>
+
+  {/* Fade Edges */}
+  <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-32 bg-gradient-to-r from-slate-950 to-transparent"></div>
+  <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-32 bg-gradient-to-l from-slate-950 to-transparent"></div>
+
+  <motion.div
+    animate={{ x: ["0%", "-50%"] }}
+    transition={{
+      duration: 28,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+    className="relative z-10 flex w-max items-center gap-8"
+  >
+    {[...Array(2)].map((_, groupIndex) => (
+      <div key={groupIndex} className="flex items-center gap-8">
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={`${groupIndex}-${i}`}
+            className="flex items-center gap-5 rounded-[2rem] border border-white/10 bg-white/[0.06] px-8 py-5 shadow-2xl backdrop-blur-xl"
+          >
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-lg">
+              <img
+                src="/logo.png"
+                alt="Bold India Group"
+                className="h-12 w-12 object-contain"
+              />
+            </div>
+
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.35em] text-amber-400">
+                Premium Real Estate
+              </p>
+
+              <h3 className="mt-1 text-2xl md:text-4xl font-black uppercase tracking-tight text-white">
+                Bold India Group
+              </h3>
+            </div>
+
+            <div className="h-12 w-px bg-white/15"></div>
+
+            <span className="text-3xl text-amber-400">✦</span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </motion.div>
+</section>
 
         {/* --- FEATURED PROPERTIES --- */}
         <section className="max-w-7xl mx-auto py-24 px-6 bg-white">
@@ -203,21 +252,76 @@ export default function Home() {
 
         <Testimonials />
 
-        {/* --- FINAL CTA SECTION --- */}
-        <section className="py-32 px-6 bg-white">
-          <motion.div 
-            whileHover={{ scale: 1.01 }}
-            className="max-w-6xl mx-auto bg-amber-400 rounded-[4rem] p-12 md:p-24 relative overflow-hidden shadow-2xl shadow-amber-200 text-center"
-          >
-            <div className="relative z-10">
-              <h2 className="text-5xl md:text-7xl font-black text-slate-950 mb-8 italic tracking-tighter uppercase">Ready to make a move?</h2>
-              <p className="text-slate-900 text-xl mb-12 font-bold max-w-xl mx-auto">Join 1,800+ families who found their peace with Bold India Group.</p>
-              <Link href="/contact" className="inline-block bg-slate-950 text-white px-14 py-6 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-[0.2em] shadow-2xl">
-                Contact A Specialist
-              </Link>
-            </div>
-          </motion.div>
-        </section>
+       {/* --- FINAL CTA + OWNER SECTION --- */}
+<section className="py-32 px-6 bg-white">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+    
+    {/* CTA Box */}
+    <motion.div
+      whileHover={{ scale: 1.01 }}
+      className="bg-amber-400 rounded-[4rem] p-10 md:p-16 relative overflow-hidden shadow-2xl shadow-amber-200 flex items-center text-center"
+    >
+      <div className="relative z-10 w-full">
+        <h2 className="text-4xl md:text-6xl font-black text-slate-950 mb-8 italic tracking-tighter uppercase">
+          Ready to make a move?
+        </h2>
+
+        <p className="text-slate-900 text-lg mb-10 font-bold max-w-xl mx-auto">
+          Join 1,800+ families who found their perfect property with Bold India Group.
+        </p>
+
+        <Link
+          href="/contact"
+          className="inline-block bg-slate-950 text-white px-10 py-5 rounded-2xl font-black hover:bg-slate-800 transition-all uppercase tracking-[0.2em] shadow-2xl"
+        >
+          Contact A Specialist
+        </Link>
+      </div>
+    </motion.div>
+
+    {/* Owner About Box */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-slate-950 rounded-[4rem] p-10 md:p-16 shadow-2xl text-white flex flex-col justify-between"
+    >
+      <div>
+        <p className="text-amber-400 font-bold tracking-[0.25em] text-xs uppercase mb-5">
+          From The Founder
+        </p>
+
+        <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">
+          Building Trust Through Real Estate.
+        </h3>
+
+        <p className="text-slate-300 leading-8 text-base md:text-lg">
+          At Bold India Group, our focus is to make property buying simple,
+          transparent, and reliable. We help families and investors find spaces
+          that match their goals, lifestyle, and long-term vision.
+        </p>
+      </div>
+
+      <div className="mt-10 flex items-center gap-4">
+        <img
+          src="https://i.pravatar.cc/120?img=12"
+          alt="Founder"
+          className="w-16 h-16 rounded-full object-cover border-4 border-amber-400"
+        />
+
+        <div>
+          <h4 className="text-lg font-black text-white">
+            Dr.Pawan Purusharthi
+          </h4>
+
+          <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">
+            Founder & CEO
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</section>
       </main>
     </div>
   );
