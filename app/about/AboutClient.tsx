@@ -30,8 +30,8 @@ export default function AboutClient() {
       className="relative overflow-hidden rounded-[2.5rem] shadow-2xl"
     >
       <img
-        src="/banner.jpg"
-        alt="Luxury Real Estate Banner"
+        src="/about.jpg"
+        alt="About Bold India Group"
         className="w-full h-[220px] sm:h-[320px] md:h-[500px] object-cover"
       />
 
@@ -73,6 +73,29 @@ export default function AboutClient() {
             <div className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 md:border-8 border-white">
               <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" alt="Modern Office" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Banner Section */}
+      <section className="w-full bg-white pb-24 px-4 md:px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-[2.5rem] shadow-2xl"
+          >
+            <img
+              src="/banner.jpg"
+              alt="Luxury Real Estate Banner"
+              className="w-full h-[220px] sm:h-[320px] md:h-[500px] object-cover"
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/25"></div>
+            {/* Bottom gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           </motion.div>
         </div>
       </section>
