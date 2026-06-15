@@ -50,16 +50,42 @@ export default function ContactClient() {
   return (
     <div className="bg-white min-h-screen font-sans text-slate-900 overflow-x-hidden">
       {/* Header */}
-      <section className="pt-24 pb-16 px-4 md:px-6 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.span initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+      <section className="relative pt-32 pb-24 px-4 md:px-6 bg-slate-950 overflow-hidden text-center border-b border-slate-800">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920"
+            alt="Luxury Architecture Background"
+            className="w-full h-full object-cover brightness-[0.22]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/50 to-slate-950"></div>
+          {/* Subtle glow pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.08),transparent_50%)]"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-amber-400 font-bold tracking-[0.3em] text-xs uppercase mb-6 block"
+          >
             Get In Touch
           </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-4xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight"
+          >
             Let&apos;s Talk About <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600">Your Future Home.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500">Your Future Home.</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="text-slate-500 text-base md:text-xl max-w-2xl mx-auto font-medium">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-slate-300 text-base md:text-xl max-w-2xl mx-auto font-medium leading-relaxed"
+          >
             Whether you&apos;re looking to buy, sell, or invest, our experts are here to provide tailored advice and premium service.
           </motion.p>
         </div>
@@ -75,7 +101,7 @@ export default function ContactClient() {
                 <div className="grid sm:grid-cols-2 gap-8">
                   {[
                     { icon: <Phone size={24} />, title: "Call Us", details: ["+91 93116 96477"], link: "tel:+919311696477" },
-                    { icon: <Mail size={24} />, title: "Email Us", details: ["imageinstituteofficial@gmail.com"], link: "mailto:imageinstituteofficial@gmail.com" },
+                    { icon: <Mail size={24} />, title: "Email Us", details: ["sales@boldindiagroup.com"], link: "mailto:sales@boldindiagroup.com" },
                     { icon: <MapPin size={24} />, title: "Our HQ", details: ["BOLD INDIA GROUP, RZ A-1/25, Palam-Dabri Main Road, Mahaveer Enclave, Upper of The Bank of Baroda , New Delhi 110045"] },
                     { icon: <Clock size={24} />, title: "Business Hours", details: ["Mon - Sat: 10AM - 7PM", "Closed on Sundays"], special: true },
                   ].map((item, idx) => (
