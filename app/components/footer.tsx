@@ -36,7 +36,7 @@ const Footer = () => {
             Contact
           </span>
           <p>Delhi, India</p>
-          <a href="mailto:imageinstituteofficial@gmail.com"><p>imageinstituteofficial@gmail.com</p></a>
+          <a href="mailto:sales@boldindiagroup.com"><p>sales@boldindiagroup.com</p></a>
           <a href="tel:+919311696477"><p>+91 93116 96477</p></a>
         </div>
 
