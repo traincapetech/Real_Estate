@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  
+  /* The 3-Color Luxury Architecture Tokens */
+  --color-paper: #faf8f5;        /* 60% warm editorial off-white */
+  --color-paper-card: #ffffff;   /* Pure card surface */
+  --color-paper-subtle: #f4efe8; /* Subtle warm tint */
+  --color-ink: #141414;          /* 30% near-black deep charcoal */
+  --color-ink-muted: #6e6b66;    /* Secondary muted typography */
+  --color-ink-faint: #9c978f;    /* Micro meta labels */
+  --color-hairline: rgba(20, 20, 20, 0.08); /* Hairline architectural borders */
+  --color-hairline-strong: rgba(20, 20, 20, 0.16);
+  --color-accent: #9e7a44;       /* 10% warm bronze / brass (used with extreme restraint) */
+  --color-accent-hover: #866636;
+}
+
+:root {
+  --background: #faf8f5;
+  --foreground: #141414;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), serif;
+  font-feature-settings: "pnum" 1, "onum" 1;
+}
+
+.luxury-hairline {
+  border-color: rgba(20, 20, 20, 0.08);
+}
+
+.glass-paper {
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(20, 20, 20, 0.06);
+}
+
+.card-luxury {
+  background: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.07);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(20, 20, 20, 0.07);
+  border-color: rgba(20, 20, 20, 0.14);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
+  color: transparent;
+}
+
+.text-stroke-dark {
+  -webkit-text-stroke: 1.5px rgba(20, 20, 20, 0.35);
+  color: transparent;
+}
+
+.text-stroke-thick {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
+  color: transparent;
+}
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1.5px rgba(212, 175, 55, 0.6);
+  color: transparent;
+}
+
